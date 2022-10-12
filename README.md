@@ -1,3 +1,3 @@
-# songcrud
+# I4G x Zuri Training Cohort II
 
-## My First Django Project
+### songcrud: First Django Project

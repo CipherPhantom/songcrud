@@ -111,15 +111,15 @@ def lyric_list_api(request):
 def lyric_detail_api(request, id):
     try:
         lyric = Lyric.objects.get(id=id)
-    except Song.DoesNotExist:
+    except Lyric.DoesNotExist:
         return Response({"message": f"Lyric with id {id} does not exist."}, status=status.HTTP_404_NOT_FOUND)
 
     if request.method == "GET":
-        serializer =  SongSerializer(lyric)
+        serializer =  LyricSerializer(lyric)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method  == "PUT":
-        serializer = SongSerializer(lyric, data=request.data)
+        serializer = LyricSerializer(lyric, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
